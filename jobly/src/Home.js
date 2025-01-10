@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import JoblyApi from './api';
 
-const Test = () => {
+const Home = () => {
     const [data, setData] = useState('');
     const getCompany = async () => {
         try {
@@ -11,6 +12,14 @@ const Test = () => {
             console.log("There was an error retrieving the data. Error:", e);
         }
     }
+    (async function fetchCompany() {
+        try {
+          const company = await JoblyApi.getCompany("anderson-arias-morrow");
+          console.log("fetchCompany Company Details:", company);
+        } catch (err) {
+          console.error("Error fetching company:", err);
+        }
+      })();
     return (
         <div>
             <h2>Test Component is working.</h2>
@@ -21,4 +30,4 @@ const Test = () => {
     )
 }   // END Test()
 
-export default Test;
+export default Home;

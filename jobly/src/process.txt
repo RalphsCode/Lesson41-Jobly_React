@@ -1,0 +1,13 @@
+Created the databases
+Got the paths for the database working
+Got the backend server working via node (node server.js)
+installed CRA (npx create-react-app)
+built a test component
+got the app started (npm start)
+npm Installed npm axios
+Got the API helper (api.js) working in my test app
+npm Installed React Router
+Built the routes
+Built the webpage Components
+Built a navbar
+Built CSS for the navbar
