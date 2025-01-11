@@ -27,6 +27,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/companies" element={<Companies />} />
+          <Route path="/companies/:handle" element={<Companies />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/register" element={<RegisterForm userToLocalStorage = {userToLocalStorage} />} />
