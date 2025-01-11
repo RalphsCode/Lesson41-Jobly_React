@@ -13,8 +13,9 @@ import {
   CardTitle,
 } from "reactstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
+import JoblyApi from "./api";
 
-const LoginForm = () => {
+const LoginForm = ({userToLocalStorage}) => {
   const [formData, setFormData] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
@@ -25,11 +26,21 @@ const LoginForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  // Function to handle the form data once submitted
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted with:", formData);
-    // Add your login logic here
-  };
+    console.log("Login formData:", formData);
+    try {
+        // Send the form data to the backend via API, token should be returned
+        const result = await JoblyApi.loginUser(formData);
+        console.log('User logged in (token):', result.token);
+        userToLocalStorage({"username":formData.username, "token":result.token});
+        console.log("Username in local storage:", localStorage.getItem("token") );
+        
+      } catch (err) {
+        console.log('Login failed. Please try again. Error:', err);
+      }
+  };    // END handleSubmit()
 
   return (
     <Container className="mt-5">

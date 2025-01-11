@@ -29,8 +29,8 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<RegisterForm userToLocalStorage = {userToLocalStorage}/>} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route path="/register" element={<RegisterForm userToLocalStorage = {userToLocalStorage} />} />
+          <Route path="/login" element={<LoginForm userToLocalStorage = {userToLocalStorage} />} />
         </Routes>
       </BrowserRouter>
   </div>

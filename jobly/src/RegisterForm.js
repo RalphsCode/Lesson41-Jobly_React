@@ -36,13 +36,12 @@ const RegisterForm = ({userToLocalStorage}) => {
   // Function to handle the form data once submitted
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("formData:", formData);
+    console.log("Register formData:", formData);
     try {
         // Send the form data to the backend via API
         const result = await JoblyApi.registerUser(formData);
-        console.log('User registered (Token):', result);
-        userToLocalStorage({"username":formData.username, "token":result});
-        
+        // returns an object containing the token
+        userToLocalStorage({"username":formData.username, "token":result.token});
       } catch (err) {
         console.log('Registration failed. Please try again. Error:', err);
       }
