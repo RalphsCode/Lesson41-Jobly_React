@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+// Using ReactStrap for styling
 import {
   Form,
   FormGroup,
@@ -12,14 +13,15 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import JoblyApi from "./api";
 
-const RegisterForm = () => {
+const RegisterForm = ({updateUserState}) => {
     // Create a useState to hold the user input
+    // Prefilled to make testing easier
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    firstName: "",
-    lastName: "",
-    email: "",
+    username: "Tester",
+    password: "tester",
+    firstName: "Test",
+    lastName: "MoreNmore",
+    email: "test@none.com",
   });
 
   // Function to update the state when the user types something
@@ -39,9 +41,10 @@ const RegisterForm = () => {
         // Send the form data to the backend via API
         const result = await JoblyApi.registerUser(formData);
         console.log('User registered (Token):', result);
+        updateUserState({"username":formData.username, "token":result});
         
       } catch (err) {
-        console.log('Registration failed. Please try again.');
+        console.log('Registration failed. Please try again. Error:', err);
       }
   };    // END handleSubmit()
 
