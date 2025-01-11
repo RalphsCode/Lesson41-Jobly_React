@@ -1,33 +1,42 @@
-import React, {useState} from 'react';
-import axios from 'axios';
-import JoblyApi from './api';
+import React, { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { Container, Row, Col, Button } from "reactstrap";
 
 const Home = () => {
-    const [data, setData] = useState('');
-    const getCompany = async () => {
-        try {
-        const res = await axios.get('http://localhost:3001/companies/anderson-arias-morrow');
-        setData(res.data.company);
-        } catch(e) {
-            console.log("There was an error retrieving the data. Error:", e);
-        }
-    }
-    (async function fetchCompany() {
-        try {
-          const company = await JoblyApi.getCompany("anderson-arias-morrow");
-          console.log("fetchCompany Company Details:", company);
-        } catch (err) {
-          console.error("Error fetching company:", err);
-        }
-      })();
-    return (
-        <div>
-            <h2>Test Component is working.</h2>
-            {data !== '' ? (<h3>{data.name}<br />{data.description}</h3>) : 
-            (<button onClick={getCompany}>Get Company</button>)
-            }
-        </div>
-    )
-}   // END Test()
+  const [navigateTo, setNavigateTo] = useState(null);
+
+  const handleNavigation = (path) => {
+    setNavigateTo(path);
+  };
+
+  if (navigateTo) {
+    return <Navigate to={navigateTo} />;
+  }
+
+  return (
+    <Container className="mt-5">
+      <Row className="justify-content-center">
+        <Col md="6">
+          <Button
+            color="primary"
+            size="lg"
+            block
+            onClick={() => handleNavigation("/register")}
+          >
+            New User: Register
+          </Button>
+          <Button
+            color="secondary"
+            size="lg"
+            block
+            onClick={() => handleNavigation("/login")}
+          >
+            Existing User: Login
+          </Button>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
 export default Home;

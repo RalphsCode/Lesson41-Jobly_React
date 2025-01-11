@@ -5,7 +5,12 @@ import NavBar from './NavBar';
 import Companies from './Companies';
 import Jobs from './Jobs';
 import Profile from './Profile';
+import RegisterForm from './RegisterForm';
+import LoginForm from './LoginForm';
 
+/** Function to Display the Masthead Message, the NavBar, 
+ * and routes to the web Components.
+ */
 function App() {
   return (
     <div className="App">
@@ -17,6 +22,8 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/register" element={<RegisterForm />} />
+          <Route path="/login" element={<LoginForm />} />
         </Routes>
       </BrowserRouter>
   </div>

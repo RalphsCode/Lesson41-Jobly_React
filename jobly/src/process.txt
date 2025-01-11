@@ -11,3 +11,6 @@ Built the routes
 Built the webpage Components
 Built a navbar
 Built CSS for the navbar
+Made buttons on home page for register/login
+Built the register and login Components
+Built registerUser functionality that uses the api.js to connect with the backend.
