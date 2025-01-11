@@ -13,18 +13,11 @@ import LoginForm from './LoginForm';
  * and routes to the web Components.
  */
 function App() {
-  // Create a state to hold the user & token
-  const [user, setUser] = useState({});
-  
-  // Function to update the 'user' state
-  const updateUserState = (token) => {
-    setUser(token);
-  };  // END updateUserState
-
-  // Using useEffect tto get the updated state value
-  useEffect(() => {
-    console.log("User state has been updated:", user);
-  }, [user]);
+  // Function to add the username and token to local storage
+  const userToLocalStorage = (user) => {
+    localStorage.setItem("username", user.username);
+    localStorage.setItem("token", user.token);
+  };
 
   return (
     <div className="App">
@@ -36,7 +29,7 @@ function App() {
           <Route path="/companies" element={<Companies />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/register" element={<RegisterForm updateUserState = {updateUserState}/>} />
+          <Route path="/register" element={<RegisterForm userToLocalStorage = {userToLocalStorage}/>} />
           <Route path="/login" element={<LoginForm />} />
         </Routes>
       </BrowserRouter>

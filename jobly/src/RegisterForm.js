@@ -13,7 +13,7 @@ import {
 import "bootstrap/dist/css/bootstrap.min.css";
 import JoblyApi from "./api";
 
-const RegisterForm = ({updateUserState}) => {
+const RegisterForm = ({userToLocalStorage}) => {
     // Create a useState to hold the user input
     // Prefilled to make testing easier
   const [formData, setFormData] = useState({
@@ -41,7 +41,7 @@ const RegisterForm = ({updateUserState}) => {
         // Send the form data to the backend via API
         const result = await JoblyApi.registerUser(formData);
         console.log('User registered (Token):', result);
-        updateUserState({"username":formData.username, "token":result});
+        userToLocalStorage({"username":formData.username, "token":result});
         
       } catch (err) {
         console.log('Registration failed. Please try again. Error:', err);
