@@ -17,6 +17,9 @@ const Home = () => {
     <Container className="mt-5">
       <Row className="justify-content-center">
         <Col md="6">
+        {localStorage.getItem("username") ? 
+        <h2>Welcome {localStorage.getItem("username")}.</h2> :
+        <>
           <Button
             color="primary"
             size="lg"
@@ -33,6 +36,8 @@ const Home = () => {
           >
             Existing User: Login
           </Button>
+          </>
+          }
         </Col>
       </Row>
     </Container>

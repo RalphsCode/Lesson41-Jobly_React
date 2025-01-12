@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 // Using ReactStrap for styling
 import {
   Form,
@@ -14,6 +15,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import JoblyApi from "./api";
 
 const RegisterForm = ({userToLocalStorage}) => {
+    const navigate = useNavigate();
     // Create a useState to hold the user input
     // Prefilled to make testing easier
   const [formData, setFormData] = useState({
@@ -42,6 +44,8 @@ const RegisterForm = ({userToLocalStorage}) => {
         const result = await JoblyApi.registerUser(formData);
         // returns an object containing the token
         userToLocalStorage({"username":formData.username, "token":result.token});
+        // Send user to home page
+        navigate("/"); 
       } catch (err) {
         console.log('Registration failed. Please try again. Error:', err);
       }

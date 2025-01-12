@@ -16,3 +16,6 @@ Built the register and login Components
 Built registerUser functionality that uses the api.js to connect with the backend.
 Put the username & generated token into a useState, then changed it to be localstorage.
 Built a getter function to retrive the user token from local storage in the api helper.
+Built the Companies Component, integrating the company detail page.
+Added functionality to change the home page and nav bar when a user is logged in.
+Added a logout button to the navbar.

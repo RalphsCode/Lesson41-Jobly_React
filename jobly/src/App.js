@@ -21,7 +21,6 @@ function App() {
 
   return (
     <div className="App">
-      <h1>RalphsCode Jobly - React Version</h1>
       <BrowserRouter>
         <NavBar />
         <Routes>

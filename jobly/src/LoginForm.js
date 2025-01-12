@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   Container,
   Row,
@@ -16,6 +17,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import JoblyApi from "./api";
 
 const LoginForm = ({userToLocalStorage}) => {
+  const navigate = useNavigate();
+
+  // Set a State to hold the form data
   const [formData, setFormData] = useState({ username: "", password: "" });
 
   const handleChange = (e) => {
@@ -33,10 +37,9 @@ const LoginForm = ({userToLocalStorage}) => {
     try {
         // Send the form data to the backend via API, token should be returned
         const result = await JoblyApi.loginUser(formData);
-        console.log('User logged in (token):', result.token);
         userToLocalStorage({"username":formData.username, "token":result.token});
-        console.log("Username in local storage:", localStorage.getItem("token") );
-        
+        // Send user to home page
+        navigate("/");        
       } catch (err) {
         console.log('Login failed. Please try again. Error:', err);
       }
