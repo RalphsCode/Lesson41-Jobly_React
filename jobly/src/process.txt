@@ -19,3 +19,5 @@ Built a getter function to retrive the user token from local storage in the api 
 Built the Companies Component, integrating the company detail page.
 Added functionality to change the home page and nav bar when a user is logged in.
 Added a logout button to the navbar.
+Worked on the Jobs Component, to list all jobs and added fake "apply" code.
+

@@ -58,7 +58,15 @@ class JoblyApi {
     let res = await this.request('jobs');
     return res.jobs;
   };
-  
+
+  /** Get a user */
+  static async getUser(username) {
+    // Using the helper method (request) above to do the API call
+    const res = await this.request(`users/${username}`, username, "GET");
+    return res;
+  };  // END 
+
+
   /** Register a new user. */
   static async registerUser(formData) {
     // Using the helper method (request) above to do the API call

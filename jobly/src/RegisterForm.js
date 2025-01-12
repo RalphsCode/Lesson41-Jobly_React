@@ -17,13 +17,12 @@ import JoblyApi from "./api";
 const RegisterForm = ({userToLocalStorage}) => {
     const navigate = useNavigate();
     // Create a useState to hold the user input
-    // Prefilled to make testing easier
   const [formData, setFormData] = useState({
-    username: "testy",
-    password: "tester",
-    firstName: "Test",
-    lastName: "User",
-    email: "test@none.com",
+    username: "",
+    password: "",
+    firstName: "",
+    lastName: "",
+    email: "",
   });
 
   // Function to update the state when the user types something

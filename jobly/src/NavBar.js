@@ -15,6 +15,7 @@ const NavBar = () => {
   // Function to log a user out
   const handleLogout = () => {
     localStorage.removeItem("username");
+    localStorage.removeItem("token");
     // Send the user to the homepage
     navigate("/");
   }; // END handleLogout()
