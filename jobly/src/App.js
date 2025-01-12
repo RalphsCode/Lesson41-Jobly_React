@@ -9,16 +9,15 @@ import Profile from './Profile';
 import RegisterForm from './RegisterForm';
 import LoginForm from './LoginForm';
 
-/** Function to Display the Masthead Message, the NavBar, 
- * and routes to the web Components.
- */
+/** Function to Display the NavBar, and routes to the web Components.  */
 function App() {
   // Function to add the username and token to local storage
   const userToLocalStorage = (user) => {
     localStorage.setItem("username", user.username);
     localStorage.setItem("token", user.token);
-  };
+  };  // END userToLocalStorage()
 
+  // Return the Routes
   return (
     <div className="App">
       <BrowserRouter>

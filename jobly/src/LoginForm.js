@@ -22,20 +22,20 @@ const LoginForm = ({userToLocalStorage}) => {
   // Set a State to hold the form data
   const [formData, setFormData] = useState({ username: "", password: "" });
 
+  // Handle change when the user types in the inputs
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((data) => ({
       ...data,
       [name]: value,
     }));
-  };
+  };  // END handleChange()
 
   // Function to handle the form data once submitted
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login formData:", formData);
     try {
-        // Send the form data to the backend via API, token should be returned
+        // Send the form data to the backend via API, token returned
         const result = await JoblyApi.loginUser(formData);
         userToLocalStorage({"username":formData.username, "token":result.token});
         // Send user to home page
@@ -45,6 +45,7 @@ const LoginForm = ({userToLocalStorage}) => {
       }
   };    // END handleSubmit()
 
+  // Return the form with Reactstrap formatting
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">
@@ -89,6 +90,6 @@ const LoginForm = ({userToLocalStorage}) => {
       </Row>
     </Container>
   );
-};
+};  // END LoginForm
 
 export default LoginForm;

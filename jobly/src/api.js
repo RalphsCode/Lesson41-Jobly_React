@@ -45,7 +45,7 @@ class JoblyApi {
     static async getAllCompanies() {
       let res = await this.request('companies');
       return res.companies;
-  }
+  };
 
   /** Get details on a company by handle. */
   static async getCompany(handle) {
@@ -53,6 +53,12 @@ class JoblyApi {
     return res.company;
   };
 
+  /** Return all Jobs. */
+  static async getAllJobs() {
+    let res = await this.request('jobs');
+    return res.jobs;
+  };
+  
   /** Register a new user. */
   static async registerUser(formData) {
     // Using the helper method (request) above to do the API call

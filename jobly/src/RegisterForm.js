@@ -19,10 +19,10 @@ const RegisterForm = ({userToLocalStorage}) => {
     // Create a useState to hold the user input
     // Prefilled to make testing easier
   const [formData, setFormData] = useState({
-    username: "Tester",
+    username: "testy",
     password: "tester",
     firstName: "Test",
-    lastName: "MoreNmore",
+    lastName: "User",
     email: "test@none.com",
   });
 
@@ -51,6 +51,7 @@ const RegisterForm = ({userToLocalStorage}) => {
       }
   };    // END handleSubmit()
 
+  // Return the form with ReactStrap formatting
   return (
     <Container className="mt-5">
       <Row className="justify-content-center">

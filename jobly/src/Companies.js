@@ -11,11 +11,18 @@ import {
   ListGroupItem,
 } from "reactstrap";
 
+/** Function to get and display either (1) info on all companies
+ * or (2) details on a specific company.
+ * Styled with ReactStrap.  */
 const Companies = () => {
-  const { handle } = useParams(); // Get the handle from the route
+    // Check if there is a company handle paramater passed in
+  const { handle } = useParams(); 
+
+  // Create states to store the company datam and a loading status
   const [company, setCompany] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Using a useEffect here to pull the relevant data for Companies or specific Company
   useEffect(() => {
     const fetchCompanyData = async () => {
       setLoading(true);
@@ -25,24 +32,28 @@ const Companies = () => {
           const companyData = await JoblyApi.getCompany(handle);
           setCompany(companyData);
         } else {
-          // Fetch all companies if no handle is provided
+          // Fetch all companies if no handle paramater passed in
           const companies = await JoblyApi.getAllCompanies();
           setCompany({ companies });
         }
       } catch (err) {
-        console.error("Error fetching company data:", err);
+        console.error("Error getting company data:", err);
       } finally {
         setLoading(false);
       }
-    };
+    };  // END fetchCompanyData
+
+    // Initiate the function
     fetchCompanyData();
-  }, [handle]);
+  }, [handle]); // Update whwnever the handle changes
 
   if (loading) return <p>Loading...</p>;
 
   return (
     <Container>
+        {/* Ternary Operator to check if displaying one company or all companies */}
       {handle && company ? (
+        // Just one company
         <Card>
           <CardBody>
             <CardTitle tag="h3">{company.name}</CardTitle>
@@ -52,6 +63,7 @@ const Companies = () => {
               <strong>Available Jobs:</strong>
             </CardText>
             <ListGroup>
+                {/* Loop through any jobs the company has open */}
                 {company.jobs.map((job) => (
                     <ListGroupItem key={job.id}>
                     <p>
@@ -66,6 +78,7 @@ const Companies = () => {
           </CardBody>
         </Card>
       ) : (
+        // ALl companies
         company &&
         company.companies.map((comp) => (
           <Card key={comp.handle} className="my-3">
@@ -82,6 +95,6 @@ const Companies = () => {
       )}
     </Container>
   );
-};
+};  // END Companies
 
 export default Companies;
