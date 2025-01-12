@@ -1,4 +1,4 @@
-# RalphsCode Jobly Full Stact App
+# RalphsCode Jobly Full Stack App
 
 The Backend is built with Express & Node, and in the backend directory.
 
